@@ -1,9 +1,10 @@
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="JunicLab creates products that help people discover their tastes and make their own choices." />
+  <meta name="description" content="JunicLab is an independent product studio building software that helps people discover their tastes and make their own choices." />
   <meta property="og:title" content="JunicLab" />
   <meta property="og:description" content="Different tastes. Different choices." />
   <meta property="og:url" content="https://juniclab.com" />
@@ -25,15 +26,16 @@
   <style>
     :root {
       --bg: #FCFCFC;
-      --bg-alt: #F5F4F1;
+      --bg-alt: #F7F6F3;
       --surface: #FFFFFF;
       --text-main: #111827;
-      --text-muted: #556174;
+      --text-muted: #4B5563;
       --border: #E5E7EB;
+      --border-dark: #D1D5DB;
       --accent: #B45309;
       --accent-bg: #FEF3C7;
       --accent-border: #F2D59C;
-      --max-width: 900px;
+      --max-width: 860px;
     }
 
     * { box-sizing: border-box; }
@@ -43,18 +45,23 @@
       margin: 0;
       background: var(--bg);
       color: var(--text-main);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.6;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.65;
       word-break: keep-all;
       overflow-wrap: break-word;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
-    a { color: inherit; text-decoration: none; transition: color 0.2s ease; }
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
     a:hover { color: var(--accent); }
 
-    a:focus-visible, button:focus-visible {
+    a:focus-visible,
+    button:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 3px;
     }
@@ -64,298 +71,886 @@
       margin: 0 auto;
     }
 
+    /* Navigation */
+
     nav {
-      position: sticky; top: 0; z-index: 10;
-      background: rgba(252, 252, 252, 0.92);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(252, 252, 252, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
 
     nav .inner {
-      height: 64px; display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .brand {
-      display: flex; align-items: center; gap: 9px;
-      font-size: 1.125rem; font-weight: 750; letter-spacing: -0.025em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.08rem;
+      font-weight: 750;
+      letter-spacing: -0.02em;
     }
 
     .brand::before {
-      content: ""; width: 8px; height: 8px; flex: 0 0 8px;
-      background: var(--accent); border-radius: 50%;
-      box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.08);
+      content: "";
+      width: 8px;
+      height: 8px;
+      flex: 0 0 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.1);
     }
 
-    .nav-right { display: flex; align-items: center; gap: 24px; }
-    .nav-links { display: flex; gap: 24px; color: var(--text-muted); font-size: 0.875rem; font-weight: 550; }
-    .nav-links a:hover { color: var(--text-main); }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 550;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
 
     .lang-toggle {
       border: 1px solid var(--border);
       border-radius: 999px;
-      padding: 5px 14px;
+      padding: 4px 14px;
       background: var(--surface);
       color: var(--text-muted);
       font: inherit;
       font-size: 0.78rem;
       font-weight: 700;
       cursor: pointer;
-      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
     }
 
     .lang-toggle:hover {
-      background: var(--bg-alt); border-color: #D6D8DC; color: var(--text-main);
+      background: var(--bg-alt);
+      border-color: var(--border-dark);
+      color: var(--text-main);
     }
+
+    /* Sections */
 
     header {
-      padding: 112px 0 82px; border-bottom: 1px solid var(--border); word-break: keep-all;
-      background: radial-gradient(circle at 12% 12%, rgba(245, 158, 11, 0.08), transparent 30%), var(--bg);
+      padding: 112px 0 84px;
+      border-bottom: 1px solid var(--border);
+      background:
+        radial-gradient(
+          circle at 14% 18%,
+          rgba(245, 158, 11, 0.08),
+          transparent 32%
+        ),
+        var(--bg);
     }
 
-    section { padding: 80px 0; border-bottom: 1px solid var(--border); word-break: keep-all; }
-    section:nth-of-type(even) { background: var(--bg-alt); }
-
-    h1 {
-      max-width: 820px; margin: 0 0 24px;
-      font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.1;
-      letter-spacing: -0.04em; font-weight: 800;
+    section {
+      padding: 84px 0;
+      border-bottom: 1px solid var(--border);
+      scroll-margin-top: 64px;
     }
 
-    h2 { margin: 0 0 20px; font-size: 1.55rem; line-height: 1.25; letter-spacing: -0.025em; font-weight: 750; }
-    h3 { margin: 0 0 8px; font-size: 1.08rem; letter-spacing: -0.01em; font-weight: 700; }
-    p { margin: 0 0 16px; }
+    section:nth-of-type(even) {
+      background: var(--bg-alt);
+    }
 
-    .lead { max-width: 660px; color: var(--text-muted); font-size: clamp(1.08rem, 2vw, 1.25rem); font-weight: 400; }
+    /* Typography */
 
     .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      margin-bottom: 22px; padding: 6px 12px;
-      border: 1px solid var(--accent-border); border-radius: 999px;
-      background: var(--accent-bg); color: var(--accent);
-      font-size: 0.75rem; font-weight: 750; letter-spacing: 0.08em; text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 22px;
+      padding: 5px 12px;
+      border: 1px solid var(--accent-border);
+      border-radius: 999px;
+      background: var(--accent-bg);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 750;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
     .eyebrow::before {
-      content: ""; width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
     }
 
     .section-label {
-      display: inline-block; margin-bottom: 14px; color: var(--accent);
-      font-size: 0.75rem; font-weight: 750; letter-spacing: 0.06em; text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-size: 0.76rem;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    .stage-intro { max-width: 680px; margin-bottom: 36px; }
-    .stage-intro p { margin-bottom: 0; color: var(--text-muted); font-size: 1.05rem; }
+    h1 {
+      max-width: 800px;
+      margin: 0 0 24px;
+      font-size: clamp(2.3rem, 5vw, 3.8rem);
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+      font-weight: 800;
+    }
 
-    .stage-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--surface);
+    h2 {
+      margin: 0 0 16px;
+      font-size: 1.55rem;
+      line-height: 1.25;
+      letter-spacing: -0.03em;
+      font-weight: 750;
     }
-    .stage-item { min-width: 0; padding: 22px; border-right: 1px solid var(--border); }
-    .stage-item:last-child { border-right: none; }
-    
-    .stage-label {
-      display: block; margin-bottom: 7px; color: var(--text-muted);
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+
+    p { margin: 0 0 16px; }
+
+    .lead {
+      max-width: 680px;
+      color: var(--text-muted);
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      font-weight: 400;
+      line-height: 1.6;
     }
-    .stage-value { display: block; color: var(--text-main); font-size: 0.98rem; font-weight: 700; line-height: 1.35; }
+
+    /* Comparison Cards */
+
+    .contrast-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .contrast-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+    }
+
+    .contrast-tag {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 0.74rem;
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .tag-old { color: #9CA3AF; }
+    .tag-new { color: var(--accent); }
+
+    .contrast-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-main);
+    }
+
+    .contrast-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    /* Product Information */
+
+    .product-spec {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 30px;
+      margin-top: 32px;
+    }
+
+    .spec-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .spec-title {
+      font-weight: 750;
+      font-size: 1.05rem;
+      color: var(--text-main);
+    }
+
+    .spec-badge {
+      font-size: 0.72rem;
+      font-weight: 750;
+      color: var(--text-muted);
+      background: var(--bg-alt);
+      border: 1px solid var(--border-dark);
+      padding: 3px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    .spec-details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .spec-item span {
+      display: block;
+    }
+
+    .spec-item .label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .spec-item .value {
+      font-size: 0.92rem;
+      font-weight: 650;
+      color: var(--text-main);
+    }
+
+    /* Roadmap */
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .timeline-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+    }
+
+    .timeline-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 750;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .badge-active {
+      background: #E0E7FF;
+      color: #3730A3;
+      border: 1px solid #C7D2FE;
+    }
+
+    .badge-upcoming {
+      background: var(--bg-alt);
+      color: var(--text-muted);
+      border: 1px solid var(--border-dark);
+    }
+
+    .timeline-card h3 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+      font-weight: 750;
+      color: var(--text-main);
+    }
+
+    .timeline-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    /* Studio */
+
+    .studio-meta {
+      display: flex;
+      gap: 32px;
+      margin-top: 24px;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .studio-meta strong {
+      color: var(--text-main);
+      font-weight: 650;
+    }
 
     .contact-link {
-      display: inline-block; color: var(--text-main); font-size: 1.125rem;
-      font-weight: 650; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 4px;
+      display: inline-block;
+      color: var(--text-main);
+      font-size: 1.15rem;
+      font-weight: 650;
+      text-decoration: underline;
+      text-decoration-color: var(--accent);
+      text-underline-offset: 4px;
+      margin-top: 10px;
     }
 
-    footer { padding: 46px 0; color: var(--text-muted); font-size: 0.875rem; }
-    footer .container { display: flex; align-items: center; justify-content: space-between; }
+    footer {
+      padding: 48px 0;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Mobile */
 
     @media (max-width: 768px) {
-      .container { width: min(var(--max-width), calc(100% - 36px)); }
-      .nav-links { display: none; }
-      header { padding: 78px 0 58px; }
-      section { padding: 62px 0; }
-      .stage-grid { grid-template-columns: 1fr 1fr; }
-      .stage-item:nth-child(2) { border-right: none; }
-      .stage-item:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
-      footer .container { flex-direction: column; gap: 14px; align-items: flex-start; }
-    }
+      .container {
+        width: min(var(--max-width), calc(100% - 36px));
+      }
 
-    @media (max-width: 460px) {
-      .stage-grid { grid-template-columns: 1fr; }
-      .stage-item { border-right: none !important; border-bottom: 1px solid var(--border); }
-      .stage-item:last-child { border-bottom: none; }
+      .nav-links {
+        display: none;
+      }
+
+      header {
+        padding: 80px 0 60px;
+      }
+
+      section {
+        padding: 64px 0;
+      }
+
+      .contrast-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .spec-details {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .timeline-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .studio-meta {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      footer .container {
+        flex-direction: column;
+        gap: 14px;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 
 <body>
+
+  <!-- Navigation -->
+
   <nav>
     <div class="container inner">
-      <a class="brand" href="#" aria-label="JunicLab home">JunicLab</a>
+      <a class="brand" href="#" aria-label="JunicLab home">
+        JunicLab
+      </a>
+
       <div class="nav-right">
         <div class="nav-links">
-          <a href="#about" data-i18n="nav_about">About</a>
+          <a href="#problem" data-i18n="nav_problem">About</a>
           <a href="#product" data-i18n="nav_product">Product</a>
-          <a href="#status" data-i18n="nav_status">Status</a>
+          <a href="#roadmap" data-i18n="nav_roadmap">Roadmap</a>
           <a href="#contact" data-i18n="nav_contact">Contact</a>
         </div>
-        <!-- 깔끔한 텍스트 토글 -->
-        <button class="lang-toggle" id="langBtn" type="button" onclick="toggleLanguage()">KO</button>
+
+        <button
+          class="lang-toggle"
+          id="langBtn"
+          type="button"
+          onclick="toggleLanguage()"
+        >KO</button>
       </div>
     </div>
   </nav>
 
+  <!-- Hero -->
+
   <header>
     <div class="container">
-      <div class="eyebrow" data-i18n="hero_label">Independent product studio</div>
-<h1 data-i18n="hero_title">Different tastes.<br>Different choices.</h1>      <p class="lead" data-i18n="hero_lead">
-        Find your own answer, not someone else's.
+      <div class="eyebrow" data-i18n="hero_eyebrow">
+        Independent Product Studio
+      </div>
+
+      <h1 data-i18n="hero_title">
+        Different tastes.<br>Different choices.
+      </h1>
+
+      <p class="lead" data-i18n="hero_lead">
+        From someone else's standards to your own.<br>
+        JunicLab plans, builds, and operates its own software products.
       </p>
     </div>
   </header>
 
-  <section id="about">
+  <!-- About -->
+
+  <section id="problem">
     <div class="container">
-      <div class="section-label" data-i18n="about_label">What We Believe</div>
-      <h2 data-i18n="about_title">Know what you like. Know yourself.</h2>
-      <p class="lead" style="margin-bottom: 0;" data-i18n="about_desc">
-        There is no single right answer for everyone. What matters is finding yours.
+      <div class="section-label" data-i18n="prob_label">
+        What We Believe
+      </div>
+
+      <h2 data-i18n="prob_title">
+        Know what you like. Know yourself.
+      </h2>
+
+      <p class="lead" data-i18n="prob_desc">
+        Information is everywhere, but it isn't always the right answer for you.
       </p>
+
+      <div class="contrast-grid">
+        <div class="contrast-card">
+          <span
+            class="contrast-tag tag-old"
+            data-i18n="card_old_tag"
+          >The Old Way</span>
+
+          <h3 data-i18n="card_old_title">
+            Averages &amp; Popularity
+          </h3>
+
+          <p data-i18n="card_old_desc">
+            Countless choices and ratings add up, but finding what works for you is still your job.
+          </p>
+        </div>
+
+        <div class="contrast-card">
+          <span
+            class="contrast-tag tag-new"
+            data-i18n="card_new_tag"
+          >The JunicLab Way</span>
+
+          <h3 data-i18n="card_new_title">
+            Your Own Standard
+          </h3>
+
+          <p data-i18n="card_new_desc">
+            Not more information, but information that fits you. We're changing how people choose.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- First Product -->
 
   <section id="product">
     <div class="container">
-      <div class="section-label" data-i18n="product_label">Current Product</div>
-      <h2 data-i18n="product_title">Not everyone's favorite. Your kind of place.</h2>
-      <p class="lead" style="margin-bottom: 0;" data-i18n="product_desc">
-        Our first product is a personalized restaurant discovery service. We are preparing for a closed beta in Daegu.
+      <div class="section-label" data-i18n="prod_label">
+        First Product
+      </div>
+
+      <h2 data-i18n="prod_title">
+        Not everyone's favorite.<br>Your kind of place.
+      </h2>
+
+      <p class="lead" data-i18n="prod_desc">
+        Was that place everyone raved about really your favorite?
+        Our first product is a personalized restaurant discovery service
+        built around taste data. We're creating a new way to find
+        restaurants that suit your taste among countless reviews.
       </p>
+
+      <div class="product-spec">
+        <div class="spec-header">
+          <div class="spec-title" data-i18n="spec_headline">
+            Personalized Restaurant Discovery
+          </div>
+
+          <span class="spec-badge" data-i18n="spec_status">
+            Preparing Closed Beta
+          </span>
+        </div>
+
+        <!-- Three Product Information Columns -->
+
+        <div class="spec-details">
+
+          <div class="spec-item">
+            <span class="label" data-i18n="spec_l1">
+              Recommendation Technology
+            </span>
+            <span class="value" data-i18n="spec_v1">
+              Taste data-driven personalization
+            </span>
+          </div>
+
+          <div class="spec-item">
+            <span class="label" data-i18n="spec_l2">
+              Starting Area
+            </span>
+            <span class="value" data-i18n="spec_v2">
+              Daegu, South Korea
+            </span>
+          </div>
+
+          <div class="spec-item">
+            <span class="label" data-i18n="spec_l3">
+              Launch Target
+            </span>
+            <span class="value" data-i18n="spec_v3">
+              Android · iOS
+            </span>
+          </div>
+
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="status">
+  <!-- Roadmap -->
+
+  <section id="roadmap">
     <div class="container">
-      <div class="stage-intro">
-        <div class="section-label" data-i18n="status_label">Current Stage</div>
-        <h2 data-i18n="status_title">Preparing for closed beta in Daegu.</h2>
-        <p data-i18n="status_desc">JunicLab is preparing its first production service for a focused local closed beta.</p>
+      <div class="section-label" data-i18n="rm_label">
+        Status &amp; Roadmap
       </div>
 
-      <div class="stage-grid" aria-label="Current stage details">
-        <div class="stage-item">
-          <span class="stage-label" data-i18n="stage_team_label">Team</span>
-          <span class="stage-value" data-i18n="stage_team_value">Solo founder</span>
+      <h2 data-i18n="rm_title">
+        From Daegu to nationwide.
+      </h2>
+
+      <p class="lead" data-i18n="rm_desc">
+        We're starting in Daegu and bringing our service to more regions across South Korea.
+      </p>
+
+      <div class="timeline-grid">
+
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <span
+              class="badge badge-active"
+              data-i18n="badge_phase1"
+            >Preparing Now</span>
+
+            <span style="font-size: 0.78rem; color: var(--text-muted);">
+              Phase 01
+            </span>
+          </div>
+
+          <h3 data-i18n="phase1_title">
+            Daegu Closed Beta
+          </h3>
+
+          <p data-i18n="phase1_desc">
+            Validating the personalized recommendation experience with real users.
+          </p>
         </div>
-        <div class="stage-item">
-          <span class="stage-label" data-i18n="stage_funding_label">Funding</span>
-          <span class="stage-value" data-i18n="stage_funding_value">Bootstrapped</span>
+
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <span
+              class="badge badge-upcoming"
+              data-i18n="badge_phase2"
+            >Next Goal</span>
+
+            <span style="font-size: 0.78rem; color: var(--text-muted);">
+              Phase 02
+            </span>
+          </div>
+
+          <h3 data-i18n="phase2_title">
+            Official Launch &amp; Nationwide Expansion
+          </h3>
+
+          <p data-i18n="phase2_desc">
+            Launching on Android and iOS, then expanding the service nationwide.
+          </p>
         </div>
-        <div class="stage-item">
-          <span class="stage-label" data-i18n="stage_status_label">Stage</span>
-          <span class="stage-value" data-i18n="stage_status_value">Closed beta prep</span>
-        </div>
-        <div class="stage-item">
-          <span class="stage-label" data-i18n="stage_market_label">Market</span>
-          <span class="stage-value" data-i18n="stage_market_value">Daegu, South Korea</span>
-        </div>
+
       </div>
     </div>
   </section>
+
+  <!-- Studio & Contact -->
 
   <section id="contact" style="border-bottom: none;">
     <div class="container">
-      <h2 data-i18n="contact_title">Contact</h2>
-      <p style="color: var(--text-muted);" data-i18n="contact_desc">For inquiries, feel free to reach out directly to the founder.</p>
-      <a class="contact-link" href="mailto:founder@juniclab.com">founder@juniclab.com</a>
+      <div class="section-label" data-i18n="cnt_label">
+        The Studio
+      </div>
+
+      <h2 data-i18n="cnt_title">
+        Independent by design.
+      </h2>
+
+      <p
+        class="lead"
+        style="margin-bottom: 0;"
+        data-i18n="cnt_desc"
+      >
+        JunicLab creates and operates its own software products.
+        For product inquiries and collaboration, contact the founder.
+      </p>
+
+      <div class="studio-meta">
+        <div>
+          <strong data-i18n="meta_t1">Operation:</strong>
+          <span data-i18n="meta_d1">Independent solo studio</span>
+        </div>
+
+        <div>
+          <strong data-i18n="meta_t2">Base:</strong>
+          <span data-i18n="meta_d2">Daegu, South Korea</span>
+        </div>
+      </div>
+
+      <a
+        class="contact-link"
+        href="mailto:founder@juniclab.com"
+      >founder@juniclab.com</a>
     </div>
   </section>
 
+  <!-- Footer -->
+
   <footer>
     <div class="container">
-      <div>© <span id="year"></span> JunicLab · South Korea</div>
-      <a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a>
+      <div>
+        © <span id="year"></span> JunicLab · South Korea
+      </div>
+
+      <a href="privacy.html" data-i18n="footer_privacy">
+        Privacy Policy
+      </a>
     </div>
   </footer>
 
+  <!-- Language & Content -->
+
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
     const i18n = {
       en: {
-        nav_about: "About", nav_product: "Product", nav_status: "Status", nav_contact: "Contact",
-        hero_label: "Independent product studio",
-hero_title: "Different tastes.<br>Different choices.",        hero_lead: "Find your own answer, not someone else's.",
-        about_label: "What We Believe",
-        about_title: "Know what you like. Know yourself.",
-        about_desc: "There is no single right answer for everyone. What matters is finding yours.",
-     
-product_label: "Current Product",
-product_title: "Not the places everyone calls good. The places that fit your taste.",
-product_desc: "Our first product is a personalized restaurant discovery service.<br>We go beyond one-size-fits-all average ratings to help people find places that suit their tastes.",
+        nav_problem: "About",
+        nav_product: "Product",
+        nav_roadmap: "Roadmap",
+        nav_contact: "Contact",
 
-status_label: "Current Stage",
-status_title: "Preparing for closed beta in Daegu.",
-status_desc: "JunicLab is preparing a limited-area closed beta for its first production service.",
+        hero_eyebrow: "Independent Product Studio",
+        hero_title: "Different tastes.<br>Different choices.",
+        hero_lead: "From someone else's standards to your own.<br>JunicLab plans, builds, and operates its own software products.",
 
-stage_team_label: "Team",
-stage_team_value: "Solo founder",
-stage_funding_label: "Funding",
-stage_funding_value: "Self-funded",
-stage_status_label: "Stage",
-stage_status_value: "Closed beta prep",
-stage_market_label: "Base",
-stage_market_value: "Daegu, South Korea",
+        prob_label: "What We Believe",
+        prob_title: "Know what you like. Know yourself.",
+        prob_desc: "Information is everywhere, but it isn't always the right answer for you.",
 
-        contact_title: "Contact", contact_desc: "For inquiries, feel free to reach out directly to the founder.",
+        card_old_tag: "The Old Way",
+        card_old_title: "Averages & Popularity",
+        card_old_desc: "Countless choices and ratings add up, but finding what works for you is still your job.",
+
+        card_new_tag: "The JunicLab Way",
+        card_new_title: "Your Own Standard",
+        card_new_desc: "Not more information, but information that fits you. We're changing how people choose.",
+
+        prod_label: "First Product",
+        prod_title: "Not everyone's favorite.<br>Your kind of place.",
+        prod_desc: "Was that place everyone raved about really your favorite? Our first product is a personalized restaurant discovery service built around taste data. We're creating a new way to find restaurants that suit your taste among countless reviews.",
+
+        spec_headline: "Personalized Restaurant Discovery",
+        spec_status: "Preparing Closed Beta",
+
+        spec_l1: "Recommendation Technology",
+        spec_v1: "Taste data-driven personalization",
+
+        spec_l2: "Starting Area",
+        spec_v2: "Daegu, South Korea",
+
+        spec_l3: "Launch Target",
+        spec_v3: "Android · iOS",
+
+        rm_label: "Status & Roadmap",
+        rm_title: "From Daegu to nationwide.",
+        rm_desc: "We're starting in Daegu and bringing our service to more regions across South Korea.",
+
+        badge_phase1: "Preparing Now",
+        phase1_title: "Daegu Closed Beta",
+        phase1_desc: "Validating the personalized recommendation experience with real users.",
+
+        badge_phase2: "Next Goal",
+        phase2_title: "Official Launch & Nationwide Expansion",
+        phase2_desc: "Launching on Android and iOS, then expanding the service nationwide.",
+
+        cnt_label: "The Studio",
+        cnt_title: "Independent by design.",
+        cnt_desc: "JunicLab creates and operates its own software products. For product inquiries and collaboration, contact the founder.",
+
+        meta_t1: "Operation:",
+        meta_d1: "Independent solo studio",
+        meta_t2: "Base:",
+        meta_d2: "Daegu, South Korea",
+
         footer_privacy: "Privacy Policy",
         lang_btn: "KO"
       },
+
       ko: {
-        nav_about: "회사 소개", nav_product: "제품", nav_status: "진행 상황", nav_contact: "연락처",
-        hero_label: "독립 프로덕트 스튜디오",
+        nav_problem: "소개",
+        nav_product: "제품",
+        nav_roadmap: "로드맵",
+        nav_contact: "연락처",
+
+        hero_eyebrow: "Independent Product Studio",
         hero_title: "사람마다 다른 취향,<br>선택도 달라야 하니까.",
-        hero_lead: "남들의 정답 말고, 나만의 답을 찾도록.",
-        about_label: "우리가 믿는 것",
-        about_title: "좋아하는 걸 알아가는 건, 나를 알아가는 일.",
-        about_desc: "누구에게나 좋은 답은 없습니다. 나에게 좋은 답을 찾는 것이 중요합니다.",
-        product_label: "현재 개발 중인 제품",
-        product_title: "남들이 말하는 맛집 말고, 내 입맛에 맞는 맛집.",
-        product_desc: "첫 번째 제품은 개인화된 맛집 탐색 서비스입니다.<br>획일적인 평균 별점에 의존하지 않고 나에게 유용한 가치를 제공합니다.",
-        status_label: "현재 단계",
-        status_title: "대구에서 클로즈 베타를 준비하고 있습니다.",
-        status_desc: "JunicLab은 첫 번째 상용 서비스를 제한된 지역 기반의 클로즈 베타로 준비 중입니다.",
-        stage_team_label: "팀", stage_team_value: "1인 창업자",
-        stage_funding_label: "자금", stage_funding_value: "자체 자금 조달",
-        stage_status_label: "단계", stage_status_value: "클로즈 베타 준비",
-        stage_market_label: "거점", stage_market_value: "대한민국 대구",
-        contact_title: "연락처", contact_desc: "문의 사항이 있으시면 창업자에게 직접 연락해 주세요.",
+        hero_lead: "남들이 정한 기준에서, 나의 기준으로.<br>JunicLab은 자체 소프트웨어 제품을 기획하고 개발·운영합니다.",
+
+        prob_label: "우리가 믿는 것",
+        prob_title: "좋아하는 걸 알아가는 건, 나를 알아가는 일.",
+        prob_desc: "정보는 넘쳐납니다. 하지만 그 정보가 나에게 정답은 아닐 수 있죠.",
+
+        card_old_tag: "기존의 방식",
+        card_old_title: "인기와 평균",
+        card_old_desc: "수많은 선택과 평가가 쌓이지만, 나에게 맞는 답은 여전히 직접 찾아야 합니다.",
+
+        card_new_tag: "JunicLab의 방식",
+        card_new_title: "나만의 기준",
+        card_new_desc: "더 많은 정보가 아니라, 나에게 맞는 정보. 우리는 선택의 기준을 바꿉니다.",
+
+        prod_label: "첫 번째 제품",
+        prod_title: "남들이 말하는 맛집 말고,<br>내 입맛에 맞는 맛집.",
+        prod_desc: "남들이 극찬했던 그곳, 나에게도 최고의 맛집이었나요? JunicLab의 첫 제품은 취향 데이터 기반의 개인화 맛집 탐색 서비스입니다. 수많은 평가 속에서 내 입맛에 맞는 식당을 발견하는 새로운 방법을 만듭니다.",
+
+        spec_headline: "개인화 맛집 탐색 서비스",
+        spec_status: "클로즈 베타 준비 중",
+
+        spec_l1: "추천 기술",
+        spec_v1: "취향 데이터 기반 개인화",
+
+        spec_l2: "시작 지역",
+        spec_v2: "대한민국 대구광역시",
+
+        spec_l3: "정식 출시 목표",
+        spec_v3: "Android · iOS",
+
+        rm_label: "진행 상황 & 로드맵",
+        rm_title: "대한민국의 대구에서 시작해, 전국으로.",
+        rm_desc: "대구에서 첫 서비스를 시작하고, 전국으로 영역을 넓혀갑니다.",
+
+        badge_phase1: "현재 준비 중",
+        phase1_title: "대구 클로즈 베타",
+        phase1_desc: "실제 사용자와 함께 개인화 추천 경험을 검증합니다.",
+
+        badge_phase2: "다음 목표",
+        phase2_title: "정식 출시와 전국 확장",
+        phase2_desc: "Android·iOS 앱을 정식 출시하고, 서비스 지역을 전국으로 넓혀갑니다.",
+
+        cnt_label: "스튜디오 소개",
+        cnt_title: "우리 제품을 직접 만듭니다.",
+        cnt_desc: "JunicLab은 자체 소프트웨어 제품을 기획하고 개발·운영합니다. 제품 문의와 협업 제안은 창업자에게 보내주세요.",
+
+        meta_t1: "운영 형태:",
+        meta_d1: "1인 독립 스튜디오",
+        meta_t2: "사업 거점:",
+        meta_d2: "대한민국 대구",
+
         footer_privacy: "개인정보처리방침",
         lang_btn: "EN"
       }
     };
 
-    let currentLang = localStorage.getItem("juniclab_lang") || "en";
+    let currentLang = "en";
+
+    try {
+      currentLang =
+        localStorage.getItem("juniclab_lang") || "en";
+    } catch (e) {
+      /* fallback */
+    }
+
+    if (!i18n[currentLang]) {
+      currentLang = "en";
+    }
 
     function applyLanguage(lang) {
       document.documentElement.lang = lang;
+
       const button = document.getElementById("langBtn");
-      // 현재 언어가 영어면 토글 버튼은 'KO'를 보여주고, 한국어면 'EN'을 보여줌
-      button.innerText = lang === "en" ? i18n.en.lang_btn : i18n.ko.lang_btn;
-      
+
+      if (button) {
+        button.innerText =
+          lang === "en"
+            ? i18n.en.lang_btn
+            : i18n.ko.lang_btn;
+      }
+
       document.querySelectorAll("[data-i18n]").forEach((el) => {
         const key = el.getAttribute("data-i18n");
-        if (i18n[lang][key]) { el.innerHTML = i18n[lang][key]; }
+
+        if (i18n[lang] && i18n[lang][key]) {
+          el.innerHTML = i18n[lang][key];
+        }
       });
     }
 
     function toggleLanguage() {
-      currentLang = currentLang === "en" ? "ko" : "en";
-      localStorage.setItem("juniclab_lang", currentLang);
+      currentLang =
+        currentLang === "en" ? "ko" : "en";
+
+      try {
+        localStorage.setItem(
+          "juniclab_lang",
+          currentLang
+        );
+      } catch (e) {
+        /* fallback */
+      }
+
       applyLanguage(currentLang);
     }
 
     applyLanguage(currentLang);
   </script>
+
 </body>
 </html>

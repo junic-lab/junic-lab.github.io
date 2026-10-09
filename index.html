@@ -4,21 +4,26 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="description" content="JunicLab is an independent product studio building software that helps people discover their tastes and make their own choices." />
+
   <meta property="og:title" content="JunicLab" />
   <meta property="og:description" content="Different tastes. Different choices." />
   <meta property="og:url" content="https://juniclab.com" />
   <meta property="og:type" content="website" />
-  <link rel="canonical" href="https://juniclab.com/" />
   <meta property="og:image" content="https://juniclab.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="JunicLab — Independent product studio" />
+
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="JunicLab" />
   <meta name="twitter:description" content="Different tastes. Different choices." />
   <meta name="twitter:image" content="https://juniclab.com/og-image.png" />
+
   <meta name="theme-color" content="#FCFCFC" />
+  <link rel="canonical" href="https://juniclab.com/" />
+
   <title>JunicLab</title>
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23b45309%22/><text x=%2250%22 y=%2268%22 font-family=%22Arial,sans-serif%22 font-size=%2260%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22>J</text></svg>">
@@ -38,14 +43,21 @@
       --max-width: 860px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
       background: var(--bg);
       color: var(--text-main);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, "Helvetica Neue",
+        Arial, sans-serif;
       line-height: 1.65;
       word-break: keep-all;
       overflow-wrap: break-word;
@@ -58,7 +70,9 @@
       transition: color 0.15s ease;
     }
 
-    a:hover { color: var(--accent); }
+    a:hover {
+      color: var(--accent);
+    }
 
     a:focus-visible,
     button:focus-visible {
@@ -103,7 +117,6 @@
       content: "";
       width: 8px;
       height: 8px;
-      flex: 0 0 8px;
       background: var(--accent);
       border-radius: 50%;
       box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.1);
@@ -226,7 +239,9 @@
       font-weight: 750;
     }
 
-    p { margin: 0 0 16px; }
+    p {
+      margin: 0 0 16px;
+    }
 
     .lead {
       max-width: 680px;
@@ -261,8 +276,13 @@
       letter-spacing: 0.05em;
     }
 
-    .tag-old { color: #9CA3AF; }
-    .tag-new { color: var(--accent); }
+    .tag-old {
+      color: #9CA3AF;
+    }
+
+    .tag-new {
+      color: var(--accent);
+    }
 
     .contrast-card h3 {
       margin: 0 0 8px;
@@ -279,73 +299,17 @@
       line-height: 1.55;
     }
 
-    /* Product Information */
+    /* Product Launch Plan */
 
-    .product-spec {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 30px;
-      margin-top: 32px;
+    .product-roadmap {
+      margin-top: 56px;
+      padding-top: 36px;
+      border-top: 1px solid var(--border-dark);
     }
-
-    .spec-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 14px;
-      margin-bottom: 18px;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .spec-title {
-      font-weight: 750;
-      font-size: 1.05rem;
-      color: var(--text-main);
-    }
-
-    .spec-badge {
-      font-size: 0.72rem;
-      font-weight: 750;
-      color: var(--text-muted);
-      background: var(--bg-alt);
-      border: 1px solid var(--border-dark);
-      padding: 3px 10px;
-      border-radius: 999px;
-      text-transform: uppercase;
-    }
-
-    .spec-details {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .spec-item span {
-      display: block;
-    }
-
-    .spec-item .label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    .spec-item .value {
-      font-size: 0.92rem;
-      font-weight: 650;
-      color: var(--text-main);
-    }
-
-    /* Roadmap */
 
     .timeline-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
       margin-top: 28px;
     }
@@ -361,6 +325,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 8px;
       margin-bottom: 14px;
     }
 
@@ -461,9 +426,9 @@
         grid-template-columns: 1fr;
       }
 
-      .spec-details {
-        grid-template-columns: 1fr;
-        gap: 14px;
+      .product-roadmap {
+        margin-top: 40px;
+        padding-top: 28px;
       }
 
       .timeline-grid {
@@ -490,15 +455,16 @@
 
   <nav>
     <div class="container inner">
+
       <a class="brand" href="#" aria-label="JunicLab home">
         JunicLab
       </a>
 
       <div class="nav-right">
+
         <div class="nav-links">
-          <a href="#problem" data-i18n="nav_problem">About</a>
+          <a href="#about" data-i18n="nav_about">About</a>
           <a href="#product" data-i18n="nav_product">Product</a>
-          <a href="#roadmap" data-i18n="nav_roadmap">Roadmap</a>
           <a href="#contact" data-i18n="nav_contact">Contact</a>
         </div>
 
@@ -508,6 +474,7 @@
           type="button"
           onclick="toggleLanguage()"
         >KO</button>
+
       </div>
     </div>
   </nav>
@@ -516,6 +483,7 @@
 
   <header>
     <div class="container">
+
       <div class="eyebrow" data-i18n="hero_eyebrow">
         Independent Product Studio
       </div>
@@ -528,13 +496,15 @@
         From someone else's standards to your own.<br>
         JunicLab plans, builds, and operates its own software products.
       </p>
+
     </div>
   </header>
 
   <!-- About -->
 
-  <section id="problem">
+  <section id="about">
     <div class="container">
+
       <div class="section-label" data-i18n="prob_label">
         What We Believe
       </div>
@@ -544,10 +514,12 @@
       </h2>
 
       <p class="lead" data-i18n="prob_desc">
-        Information is everywhere, but it isn't always the right answer for you.
+        Information is everywhere, but it isn't always
+        the right answer for you.
       </p>
 
       <div class="contrast-grid">
+
         <div class="contrast-card">
           <span
             class="contrast-tag tag-old"
@@ -559,7 +531,8 @@
           </h3>
 
           <p data-i18n="card_old_desc">
-            Countless choices and ratings add up, but finding what works for you is still your job.
+            Countless choices and ratings add up,
+            but finding what works for you is still your job.
           </p>
         </div>
 
@@ -574,17 +547,22 @@
           </h3>
 
           <p data-i18n="card_new_desc">
-            Not more information, but information that fits you. We're changing how people choose.
+            Not more information, but information that fits you.
+            We're changing how people choose.
           </p>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- First Product -->
+  <!-- First Product + Product Launch Plan -->
 
   <section id="product">
     <div class="container">
+
+      <!-- Product Introduction -->
+
       <div class="section-label" data-i18n="prod_label">
         First Product
       </div>
@@ -595,119 +573,83 @@
 
       <p class="lead" data-i18n="prod_desc">
         Was that place everyone raved about really your favorite?
-        Our first product is a personalized restaurant discovery service
-        built around taste data. We're creating a new way to find
-        restaurants that suit your taste among countless reviews.
+        Our first product is a personalized restaurant discovery
+        service built around taste data.
+        We're creating a new way to find restaurants that suit
+        your taste among countless reviews.
       </p>
 
-      <div class="product-spec">
-        <div class="spec-header">
-          <div class="spec-title" data-i18n="spec_headline">
-            Personalized Restaurant Discovery
-          </div>
+      <!-- Launch Plan Belongs To This Product -->
 
-          <span class="spec-badge" data-i18n="spec_status">
-            Preparing Closed Beta
-          </span>
+      <div class="product-roadmap">
+
+        <div class="section-label" data-i18n="rm_label">
+          Launch Plan
         </div>
 
-        <!-- Three Product Information Columns -->
+        <h2 data-i18n="rm_title">
+          From Daegu to nationwide.
+        </h2>
 
-        <div class="spec-details">
+        <p class="lead" data-i18n="rm_desc">
+          We're starting in Daegu and bringing our service
+          to more regions across South Korea.
+        </p>
 
-          <div class="spec-item">
-            <span class="label" data-i18n="spec_l1">
-              Recommendation Technology
-            </span>
-            <span class="value" data-i18n="spec_v1">
-              Taste data-driven personalization
-            </span>
+        <div class="timeline-grid">
+
+          <div class="timeline-card">
+
+            <div class="timeline-header">
+              <span
+                class="badge badge-active"
+                data-i18n="badge_phase1"
+              >Preparing Now</span>
+
+              <span style="font-size: 0.78rem; color: var(--text-muted);">
+                Phase 01
+              </span>
+            </div>
+
+            <h3 data-i18n="phase1_title">
+              Daegu Closed Beta
+            </h3>
+
+            <p data-i18n="phase1_desc">
+              Validating the personalized recommendation
+              experience with real users.
+            </p>
+
           </div>
 
-          <div class="spec-item">
-            <span class="label" data-i18n="spec_l2">
-              Starting Area
-            </span>
-            <span class="value" data-i18n="spec_v2">
-              Daegu, South Korea
-            </span>
+          <div class="timeline-card">
+
+            <div class="timeline-header">
+              <span
+                class="badge badge-upcoming"
+                data-i18n="badge_phase2"
+              >Next Goal</span>
+
+              <span style="font-size: 0.78rem; color: var(--text-muted);">
+                Phase 02
+              </span>
+            </div>
+
+            <h3 data-i18n="phase2_title">
+              Official Launch &amp; Nationwide Expansion
+            </h3>
+
+            <p data-i18n="phase2_desc">
+              Launching on Android and iOS,
+              then expanding the service nationwide.
+            </p>
+
           </div>
 
-          <div class="spec-item">
-            <span class="label" data-i18n="spec_l3">
-              Launch Target
-            </span>
-            <span class="value" data-i18n="spec_v3">
-              Android · iOS
-            </span>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Roadmap -->
-
-  <section id="roadmap">
-    <div class="container">
-      <div class="section-label" data-i18n="rm_label">
-        Status &amp; Roadmap
-      </div>
-
-      <h2 data-i18n="rm_title">
-        From Daegu to nationwide.
-      </h2>
-
-      <p class="lead" data-i18n="rm_desc">
-        We're starting in Daegu and bringing our service to more regions across South Korea.
-      </p>
-
-      <div class="timeline-grid">
-
-        <div class="timeline-card">
-          <div class="timeline-header">
-            <span
-              class="badge badge-active"
-              data-i18n="badge_phase1"
-            >Preparing Now</span>
-
-            <span style="font-size: 0.78rem; color: var(--text-muted);">
-              Phase 01
-            </span>
-          </div>
-
-          <h3 data-i18n="phase1_title">
-            Daegu Closed Beta
-          </h3>
-
-          <p data-i18n="phase1_desc">
-            Validating the personalized recommendation experience with real users.
-          </p>
-        </div>
-
-        <div class="timeline-card">
-          <div class="timeline-header">
-            <span
-              class="badge badge-upcoming"
-              data-i18n="badge_phase2"
-            >Next Goal</span>
-
-            <span style="font-size: 0.78rem; color: var(--text-muted);">
-              Phase 02
-            </span>
-          </div>
-
-          <h3 data-i18n="phase2_title">
-            Official Launch &amp; Nationwide Expansion
-          </h3>
-
-          <p data-i18n="phase2_desc">
-            Launching on Android and iOS, then expanding the service nationwide.
-          </p>
         </div>
 
       </div>
+
     </div>
   </section>
 
@@ -715,6 +657,7 @@
 
   <section id="contact" style="border-bottom: none;">
     <div class="container">
+
       <div class="section-label" data-i18n="cnt_label">
         The Studio
       </div>
@@ -733,6 +676,7 @@
       </p>
 
       <div class="studio-meta">
+
         <div>
           <strong data-i18n="meta_t1">Operation:</strong>
           <span data-i18n="meta_d1">Independent solo studio</span>
@@ -742,12 +686,14 @@
           <strong data-i18n="meta_t2">Base:</strong>
           <span data-i18n="meta_d2">Daegu, South Korea</span>
         </div>
+
       </div>
 
       <a
         class="contact-link"
         href="mailto:founder@juniclab.com"
       >founder@juniclab.com</a>
+
     </div>
   </section>
 
@@ -755,6 +701,7 @@
 
   <footer>
     <div class="container">
+
       <div>
         © <span id="year"></span> JunicLab · South Korea
       </div>
@@ -762,6 +709,7 @@
       <a href="privacy.html" data-i18n="footer_privacy">
         Privacy Policy
       </a>
+
     </div>
   </footer>
 
@@ -773,9 +721,8 @@
 
     const i18n = {
       en: {
-        nav_problem: "About",
+        nav_about: "About",
         nav_product: "Product",
-        nav_roadmap: "Roadmap",
         nav_contact: "Contact",
 
         hero_eyebrow: "Independent Product Studio",
@@ -798,19 +745,7 @@
         prod_title: "Not everyone's favorite.<br>Your kind of place.",
         prod_desc: "Was that place everyone raved about really your favorite? Our first product is a personalized restaurant discovery service built around taste data. We're creating a new way to find restaurants that suit your taste among countless reviews.",
 
-        spec_headline: "Personalized Restaurant Discovery",
-        spec_status: "Preparing Closed Beta",
-
-        spec_l1: "Recommendation Technology",
-        spec_v1: "Taste data-driven personalization",
-
-        spec_l2: "Starting Area",
-        spec_v2: "Daegu, South Korea",
-
-        spec_l3: "Launch Target",
-        spec_v3: "Android · iOS",
-
-        rm_label: "Status & Roadmap",
+        rm_label: "Launch Plan",
         rm_title: "From Daegu to nationwide.",
         rm_desc: "We're starting in Daegu and bringing our service to more regions across South Korea.",
 
@@ -836,9 +771,8 @@
       },
 
       ko: {
-        nav_problem: "소개",
+        nav_about: "소개",
         nav_product: "제품",
-        nav_roadmap: "로드맵",
         nav_contact: "연락처",
 
         hero_eyebrow: "Independent Product Studio",
@@ -861,19 +795,7 @@
         prod_title: "남들이 말하는 맛집 말고,<br>내 입맛에 맞는 맛집.",
         prod_desc: "남들이 극찬했던 그곳, 나에게도 최고의 맛집이었나요? JunicLab의 첫 제품은 취향 데이터 기반의 개인화 맛집 탐색 서비스입니다. 수많은 평가 속에서 내 입맛에 맞는 식당을 발견하는 새로운 방법을 만듭니다.",
 
-        spec_headline: "개인화 맛집 탐색 서비스",
-        spec_status: "클로즈 베타 준비 중",
-
-        spec_l1: "추천 기술",
-        spec_v1: "취향 데이터 기반 개인화",
-
-        spec_l2: "시작 지역",
-        spec_v2: "대한민국 대구광역시",
-
-        spec_l3: "정식 출시 목표",
-        spec_v3: "Android · iOS",
-
-        rm_label: "진행 상황 & 로드맵",
+        rm_label: "출시 계획",
         rm_title: "대한민국의 대구에서 시작해, 전국으로.",
         rm_desc: "대구에서 첫 서비스를 시작하고, 전국으로 영역을 넓혀갑니다.",
 
